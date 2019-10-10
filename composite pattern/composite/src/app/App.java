@@ -2,6 +2,7 @@ package app;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.lang.*;
 
 class Useful {
    public void g(){};
@@ -31,6 +32,9 @@ class Insurance{
  class CarInsurance extends Insurance implements TestInterface{
    public static final int HIGH = 200;
    
+   public CarInsurance(){
+      System.out.println("car insurance");
+   }
    public int premium(){
      return HIGH;
    }
@@ -60,8 +64,10 @@ interface TestInterface{
    }
 }
 abstract class AbstractClass{
-   
+
 }
+
+
 public class App {
     public static void main(String[] args) throws Exception {
       System.out.println("Hello Java");
@@ -91,6 +97,7 @@ public class App {
     carInsurance.test3(456);
     TestInterface.test2();
 
+    
       Employee CEO = new Employee("John","CEO", 30000);
       Employee headSales = new Employee("Robert","Head Sales", 20000);
       Employee headMarketing = new Employee("Michel","Head Marketing", 20000);
@@ -147,5 +154,22 @@ public class App {
       s2 = (short) (s1 ^ s2);
       System.out.println(s2);
 
+
+      try {
+         Class cls = Class.forName("java.lang.ClassLoader");
+
+         // returns the ClassLoader object
+         ClassLoader cLoader = cls.getClassLoader();
+       
+         /* returns the Class object associated with the class or interface 
+            with the given string name, using the given classloader. */
+         Class cls2 = Class.forName("java.lang.Thread", true, cLoader);       
+          
+         // returns the name of the class
+         System.out.println("Class = " + cls.getName());
+         System.out.println("Class = " + cls2.getName()); 
+      } catch(ClassNotFoundException ex) {
+         System.out.println(ex.toString());
+      }
     }
 }

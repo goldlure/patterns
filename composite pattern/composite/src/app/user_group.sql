@@ -11,3 +11,4 @@ LEFT JOIN objects AS o_group
 ON o_user.group_id = o_group.id;
 
 
+
